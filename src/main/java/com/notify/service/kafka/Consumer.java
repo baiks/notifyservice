@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class Consumer {
     private final NotificationService notificationService;
 
-    @KafkaListener(topics = "notification-topic")
+    @KafkaListener(topics = "notification-topic", groupId = "notify_grp")
     public void listen(NotificationDto notificationDto) {
         notificationService.process(notificationDto);
     }

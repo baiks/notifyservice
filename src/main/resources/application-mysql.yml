@@ -23,4 +23,5 @@ kafka:
     bootstrap-servers: "localhost:9092"
     key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
     value-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+    group-id: notify_grp
 sms_url: https://651e684e44a3a8aa47684914.mockapi.io/api/post/Notification
