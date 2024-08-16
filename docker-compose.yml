@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 682263059097.dkr.ecr.us-east-1.amazonaws.com/notification_service
+    container_name: notification_service
+    ports:
+      - "8004:8004"
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_CONSUMER_BOOTSTRAP-SERVERS: kafka:9092
+      KAFKA_CONSUMER_KEY-SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      KAFKA_CONSUMER_VALUE-SERIALIZER: org.apache.kafka.common.serialization.StringSerializer
+      SMS_URL: https://651e684e44a3a8aa47684914.mockapi.io/api/post/Notification
+    networks:
+      - custservice_imnetwork
+networks:
+  custservice_imnetwork:
+    external: true
